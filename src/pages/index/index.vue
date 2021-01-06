@@ -1,50 +1,26 @@
 <template>
-	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
-		<view>
-            <text class="title">{{title}}</text>
-        </view>
-	</view>
+  <div class="index">
+    <son :username.sync="value"></son>
+  </div>
 </template>
 
 <script lang="ts">
-    import Vue from 'vue';
-	export default Vue.extend({
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+import { Component, Provide, Vue, Watch } from "vue-property-decorator";
+import son from "@/components/son.vue";
 
-		},
-		methods: {
-
-		}
-	});
+@Component({
+  name: "index",
+  components: { son },
+})
+export default class App extends Vue {
+  value: any = "默认value";
+}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style lang="scss" scoped>
+.index {
+  .name {
+    color: #fff;
+  }
+}
 </style>
